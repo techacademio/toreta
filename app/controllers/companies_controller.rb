@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
+  before_action :require_company_logged_in, only: [:show]
   def show
-    @company = Company.find(@params[:id])
+    @company = Company.find(params[:id])
   end
 
   def new

@@ -2,8 +2,10 @@
   <div class="cover">
     <div class="cover-inner">
       <div class="cover-contents">
-        <h1>飲食店の採用効率を高めるきっかけ作り</h1>
-        <a href="" class="btn btn-success btn-lg">ＴＯＲＥＴＡ？を始める</a>
+        <h1>飲食店の採用効率を高めるための「はじめの一歩」</h1>
+          <% unless logged_in? %>
+            <%= link_to 'ＴＯＲＥＴＡ？を始める', signup_path, class: 'btn btn-success btn-lg' %>
+          <% end %>
       </div>
     </div>
   </div>
