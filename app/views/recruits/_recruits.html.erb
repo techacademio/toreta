@@ -1,0 +1,38 @@
+<% if recruits.any? %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>対象店舗</th>
+          <th>掲載求人媒体</th>
+          <th>掲載期間</th>
+          <th>対象エリア</th>
+          <th class="text-center">掲載費用</th>
+          <th class="text-right">応募人数</th>
+          <th class="text-right">面接人数</th>
+          <th class="text-right">採用人数</th>
+          <th class="text-center">採用単価</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @recruits.each do |recruit| %>
+          <tr>
+            <td><%= link_to recruit.stores.first.store, recruit_path(recruit.id) %></td>
+            <td><%= recruit.agent %></td>
+            <td><%= recruit.startdate %>〜<%= recruit.enddate %></td>
+            <td><%= recruit.area %></td>
+            <td class="text-right"><%= number_with_delimiter(recruit.cost) %> 円</td>
+            <td class="text-right"><%= number_with_delimiter(recruit.application_num) %> 人</td>
+            <td class="text-right"><%= number_with_delimiter(recruit.interview_num) %> 人</td>
+            <td class="text-right"><%= number_with_delimiter(recruit.employ_num) %> 人</td>
+            <% if recruit.employ_num.zero? %>
+              <td class="text-right"> - 円/人</td>
+            <% else %>
+              <td class="text-right"><%= number_with_delimiter(recruit.cost/recruit.employ_num) %> 円/人</td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

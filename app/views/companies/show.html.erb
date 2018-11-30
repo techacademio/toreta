@@ -5,4 +5,39 @@
   <div class="name text-center">
     <h1><%= @company.name %></h1>
   </div>
+  <div class="row">
+    <div class="col-xs-offset-3 col-xs-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">登録登録</div>
+        <div class="panel-body">
+          <%= form_for(@company) do |f| %>
+            <div class="form-group">
+              <%= f.label :name, '会社名' %>
+              <%= f.text_field :name, disabled: true, class: 'form-control' %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :email, 'メールアドレス' %>
+              <%= f.email_field :email, disabled: true, class: 'form-control' %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :password, 'パスワード※非表示' %>
+              <%= f.password_field :password, disabled: true, class: 'form-control' %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :password_confirmation, 'パスワード（確認）※非表示' %>
+              <%= f.password_field :password_confirmation, disabled: true, class: 'form-control' %>
+            </div>
+            
+            <div class="text-right">
+              <%= link_to '変更', edit_company_path(@company), class: 'btn btn-success' %>
+              <%= link_to '削除', @company, method: :delete, data: { confirm: "会社情報を削除しますか？" }, class: 'btn btn-danger' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

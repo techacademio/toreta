@@ -1,0 +1,22 @@
+<% if stores.any? %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>店舗名</th>
+          <th>住所</th>
+          <th>電話番号</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stores.each do |store| %>
+          <tr>
+            <td><%= link_to store.store, store_path(store.id) %></td>
+            <td><%= store.address %></td>
+            <td><%= store.tel_num %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
